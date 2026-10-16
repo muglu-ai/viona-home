@@ -45,7 +45,8 @@
 <tr><td>Preferences (sound, delays, active integrations, shortcut)</td><td>App preferences on your Mac</td><td>To remember your settings</td></tr>
 <tr><td>Files you drop on the notch</td><td>A copy in the app folder, <code>~/Library/Application Support/NotchBuddy</code></td><td>So you can ask a question about them or attach them to an email</td></tr>
 <tr><td>Claude Code session events (project name, current step, permission requests)</td><td>In memory only</td><td>To show them in the notch</td></tr>
-<tr><td>Now playing (app, title, artist) and, if you turn it on, rough audio levels</td><td>In memory only</td><td>To animate the character. Raw audio is not kept</td></tr>
+<tr><td>Now playing (app, title, artist) and, if you turn it on, rough audio levels</td><td>In memory only</td><td>To animate the character while music plays. Raw audio is not kept. This reading pauses during a film</td></tr>
+<tr><td>Meeting transcript, while notes are on</td><td>In memory, then a text file in Downloads when the meeting ends</td><td>To write notes you asked for. The recording itself is not saved</td></tr>
 </table>
 <p>You can remove keys and Google tokens in Settings. You can then delete the app and its folder at <code>~/Library/Application Support/NotchBuddy</code> (or the app’s container for an App Store build).</p>
 
@@ -66,26 +67,30 @@
 <h2>5. Other services you connect</h2>
 <p>Viona talks only to services you configure, directly from your Mac, using your own keys. Those services process data under their own policies:</p>
 <ul>
-<li><b>Anthropic (Claude API)</b> — when you chat with Claude or ask about a file or a window, the text you type, the file content and the window context you chose are sent to Anthropic. Gmail contents are not included in that request. <a href="https://www.anthropic.com/legal/privacy">Anthropic privacy policy</a>.</li>
+<li><b>Anthropic (Claude API)</b> — when you chat with Claude, ask about a file or a window, or end a meeting with notes turned on, the text you typed, the file or window context you chose, or the meeting transcript is sent to Anthropic so it can answer or summarize. Gmail contents are not included. <a href="https://www.anthropic.com/legal/privacy">Anthropic privacy policy</a>.</li>
 <li><b>Stripe, GitHub, Vercel, Resend, Notion, Cal.com, n8n</b> — Viona reads data from your own accounts (payments, repositories, deployments, emails you send through Resend, pages, bookings, workflow runs) to display them.</li>
 </ul>
 
-<h2>6. Claude Code</h2>
+<h2>6. Music, movies, and meeting notes</h2>
+<p>Music reactions read what is already playing (the app, title, and artist) so the character can dance. That information stays in memory. If you turn on system-audio analysis, only rough loudness levels are calculated on your Mac. Nothing is recorded, stored, or sent. The analysis pauses when a film is detected, including on Netflix, so the stream is not interrupted. The watching pose uses the page title or address. It does not capture the picture.</p>
+<p>Meeting notes are off until you turn them on, or say “start notes.” While Teams, Google Meet, or Zoom is in front, speech is transcribed on your Mac. The audio is not written to disk. When the meeting ends, the transcript is sent to the chat model you already use, and only then, to write a summary. The notes are saved as a text file in Downloads. Say “stop notes,” or turn the switch off, to end it.</p>
+
+<h2>7. Claude Code</h2>
 <p>If you install the Claude Code hooks, Claude Code sends session events to Viona through a local connection on your computer. Viona does not forward those events. Before changing <code>~/.claude/settings.json</code>, Viona makes a dated backup and shows you the diff. It writes only after you confirm.</p>
 
-<h2>7. Email you send yourself</h2>
+<h2>8. Email you send yourself</h2>
 <p>When you send a file by email from the notch, the message is created and sent by your own Mail app, and only after you click Send. Viona does not send Gmail, and it does not send any email on its own.</p>
 
-<h2>8. System permissions</h2>
+<h2>9. System permissions</h2>
 <p>macOS may ask for Automation (Mail, Terminal, a browser), Accessibility (the title of a window you attach) or Screen Recording (a window you attach, or optional local audio levels). Each permission is used for the feature you turned on. You can revoke it in System Settings → Privacy &amp; Security.</p>
 
-<h2>9. Children</h2>
+<h2>10. Children</h2>
 <p>Viona is a tool for people using a Mac for their own work. It is not directed at children.</p>
 
-<h2>10. Your rights</h2>
+<h2>11. Your rights</h2>
 <p>We do not hold a copy of your personal data on a server. To stop Gmail access, disconnect the account or revoke the app in your Google account. To remove local data, delete the keys in Settings and delete the app folder named above. For data held by Google or another service you connected, contact that service. You can email <a href="mailto:manishk_sharma@outlook.com">manishk_sharma@outlook.com</a> and we will confirm that we have nothing of yours to access, correct or delete.</p>
 
-<h2>11. Changes</h2>
+<h2>12. Changes</h2>
 <p>If this policy changes, the new version is published on this page with a new date.</p>
 </section>
 
@@ -113,7 +118,8 @@
 <tr><td>Préférences (son, délais, intégrations actives, raccourci)</td><td>Préférences de l’app</td><td>Garder tes réglages</td></tr>
 <tr><td>Fichiers déposés sur le notch</td><td>Une copie dans <code>~/Library/Application Support/NotchBuddy</code></td><td>Poser une question dessus ou les joindre à un mail</td></tr>
 <tr><td>Événements des sessions Claude Code (projet, étape, demandes de permission)</td><td>En mémoire uniquement</td><td>Les afficher dans le notch</td></tr>
-<tr><td>Lecture en cours (app, titre, artiste) et, si tu l’actives, des niveaux audio approximatifs</td><td>En mémoire uniquement</td><td>Animer le personnage. Le son brut n’est pas conservé</td></tr>
+<tr><td>Lecture en cours (app, titre, artiste) et, si tu l’actives, des niveaux audio approximatifs</td><td>En mémoire uniquement</td><td>Animer le personnage pendant la musique. Le son brut n’est pas conservé. Cette lecture se met en pause pendant un film</td></tr>
+<tr><td>Transcription de réunion, quand les notes sont activées</td><td>En mémoire, puis un fichier texte dans Téléchargements à la fin</td><td>Écrire les notes que tu as demandées. L’enregistrement lui-même n’est pas gardé</td></tr>
 </table>
 <p>Tu peux retirer les clés et les jetons Google dans les Réglages, puis supprimer l’app et le dossier <code>~/Library/Application Support/NotchBuddy</code> (ou le conteneur de l’app pour une version App Store).</p>
 
@@ -134,26 +140,30 @@
 <h2>5. Autres services que tu connectes</h2>
 <p>Viona ne parle qu’aux services que tu configures, directement depuis ton Mac, avec tes propres clés :</p>
 <ul>
-<li><b>Anthropic (API Claude)</b> — quand tu discutes avec Claude ou poses une question sur un fichier ou une fenêtre, le texte saisi, le contenu du fichier et le contexte de fenêtre choisi sont envoyés à Anthropic. Le contenu Gmail n’est pas inclus. <a href="https://www.anthropic.com/legal/privacy">Politique d’Anthropic</a>.</li>
+<li><b>Anthropic (API Claude)</b> — quand tu discutes avec Claude, poses une question sur un fichier ou une fenêtre, ou termines une réunion avec les notes activées, le texte saisi, le fichier ou le contexte de fenêtre choisi, ou la transcription sont envoyés à Anthropic pour répondre ou résumer. Le contenu Gmail n’est pas inclus. <a href="https://www.anthropic.com/legal/privacy">Politique d’Anthropic</a>.</li>
 <li><b>Stripe, GitHub, Vercel, Resend, Notion, Cal.com, n8n</b> — Viona lit les données de tes propres comptes (paiements, dépôts, déploiements, e-mails envoyés via Resend, pages, rendez-vous, exécutions de workflows) pour les afficher.</li>
 </ul>
 
-<h2>6. Claude Code</h2>
+<h2>6. Musique, films et notes de réunion</h2>
+<p>Les réactions musicales lisent ce qui est déjà en lecture (l’app, le titre et l’artiste) pour que le personnage danse. Ces informations restent en mémoire. Si tu actives l’analyse du son système, seuls des niveaux approximatifs sont calculés sur ton Mac. Rien n’est enregistré, conservé ou envoyé. L’analyse se met en pause quand un film est détecté, y compris sur Netflix, pour ne pas interrompre le flux. La pose « film » utilise le titre ou l’adresse de la page. Elle ne capture pas l’image.</p>
+<p>Les notes de réunion sont coupées tant que tu ne les actives pas, ou que tu ne dis pas « start notes ». Pendant que Teams, Google Meet ou Zoom est au premier plan, la parole est transcrite sur ton Mac. L’audio n’est pas écrit sur le disque. À la fin de la réunion, la transcription est envoyée au modèle de chat que tu utilises déjà, et seulement à ce moment-là, pour écrire un résumé. Les notes sont enregistrées dans un fichier texte dans Téléchargements. Dis « stop notes », ou coupe l’option, pour arrêter.</p>
+
+<h2>7. Claude Code</h2>
 <p>Si tu installes les hooks Claude Code, Claude Code envoie les événements de session à Viona par une connexion locale. Viona ne les transmet pas. Avant de modifier <code>~/.claude/settings.json</code>, Viona fait une sauvegarde datée et te montre le diff. L’écriture n’a lieu qu’après ta confirmation.</p>
 
-<h2>7. E-mail que tu envoies toi-même</h2>
+<h2>8. E-mail que tu envoies toi-même</h2>
 <p>Quand tu envoies un fichier par e-mail depuis le notch, le message est créé et envoyé par ta propre app Mail, et seulement après un clic sur Envoyer. Viona n’envoie pas de Gmail, et n’envoie aucun e-mail de lui-même.</p>
 
-<h2>8. Autorisations système</h2>
+<h2>9. Autorisations système</h2>
 <p>macOS peut demander l’Automatisation (Mail, Terminal, un navigateur), l’Accessibilité (le titre d’une fenêtre que tu attaches) ou l’Enregistrement de l’écran (une fenêtre, ou des niveaux audio locaux facultatifs). Chaque autorisation ne sert qu’à la fonction activée. Tu peux la retirer dans Réglages Système → Confidentialité et sécurité.</p>
 
-<h2>9. Enfants</h2>
+<h2>10. Enfants</h2>
 <p>Viona est un outil pour le travail sur un Mac. Il ne s’adresse pas aux enfants.</p>
 
-<h2>10. Tes droits</h2>
+<h2>11. Tes droits</h2>
 <p>Nous ne détenons pas de copie de tes données personnelles sur un serveur. Pour arrêter l’accès Gmail, déconnecte le compte ou révoque l’app dans ton compte Google. Pour effacer les données locales, retire les clés dans les Réglages et supprime le dossier de l’app. Pour les données détenues par Google ou un autre service, contacte ce service. Tu peux écrire à <a href="mailto:manishk_sharma@outlook.com">manishk_sharma@outlook.com</a> : nous confirmerons que nous n’avons rien à consulter, corriger ou supprimer.</p>
 
-<h2>11. Modifications</h2>
+<h2>12. Modifications</h2>
 <p>En cas de changement, la nouvelle version est publiée sur cette page avec une nouvelle date.</p>
 </section>
 
